@@ -1,0 +1,56 @@
+env:
+  browser: true
+  es2021: true
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: latest
+  project: ./tsconfig.json
+plugins:
+  - react
+  - react-hooks
+  - '@typescript-eslint'
+extends:
+  - plugin:react/recommended
+  - plugin:react-hooks/recommended
+  - airbnb
+  - airbnb-typescript
+  - prettier
+ignorePatterns:
+    - vite.config.ts
+settings:
+  import/resolver:
+    typescript: []
+rules:
+  # Reactのインポートをチェックしない
+  react/react-in-jsx-scope: off
+  # セミコロンつけない
+  #  never:セミコロンをステートメントの終わりとして許可しない
+  semi:
+    - error
+    - never
+  # アロー関数で本文1行のときの注括弧とreturnをエラーにしない
+  # 0=off 1=warn 2=error
+  arrow-body-style: 0
+  # デフォルトエクスポートをエラーにする
+  import/prefer-default-export: off
+  import/no-default-export: error
+  # フックのルールに準拠するようにコードを強制する
+  react-hooks/rules-of-hooks: error
+  # エフェクトの依存配列のチェック
+  react-hooks/exhaustive-deps:
+    - warn
+    - additionalHooks: '(useRecoilCallback|useRecoilTransaction_UNSTABLE)'
+  # デフォルトPropsを必須にしない
+  react/require-default-props: off
+  # オブジェクトの分割代入を禁止しない
+  react/jsx-props-no-spreading: off
+  # 単一の子コンポーネントのときフラグメントをエラーにしない
+  react/jsx-no-useless-fragment: off
+  # 定義される前の変数の使用を禁止しない
+  '@typescript-eslint/no-use-before-define': off
+  # アロー関数を禁止しない
+  '@typescript-eslint/no-unused-expressions': off
+  
+
