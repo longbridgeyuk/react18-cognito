@@ -12,7 +12,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import yup from '@/_lib/yup.custom'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuthUser } from '@/_lib'
-import * as globaltypes from '@/_types'
+import * as types from '@/_types'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
@@ -48,7 +48,7 @@ export function LoginForm({ onSuccess }: { onSuccess: () => void }) {
   // state
   const [showPassword, setShowPassword] = React.useState<boolean>(false)
   const [alertConfig, setAlertConfig] = React.useState<
-    globaltypes.AlertConfig | undefined
+  types.AlertConfig | undefined
   >()
 
   /**
@@ -94,7 +94,7 @@ export function LoginForm({ onSuccess }: { onSuccess: () => void }) {
           <MyAlert
             variant="filled"
             severity="error"
-            text="ユーザーID または パスワードが間違ってます。"
+            text={alertConfig.text}
           />
         )}
 

@@ -15,15 +15,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>React18 Cognito</title>
-    <!-- aws amplify が global is not defined エラーになる対応-->
-    <script>
-      if (global === undefined) {
-        var global = window;
-      }
-    </script>
+    
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/public/main.tsx"></script>
+    <!-- aws amplify が global is not defined エラーになる対応-->
+    <script>
+      window.global = window;
+      window.process = {
+        env: { DEBUG: undefined },
+      };
+      var exports = {};
+  </script>
   </body>
 </html>
